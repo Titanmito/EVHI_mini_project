@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 public class Hero : MonoBehaviour
 {
 
+    public int level;
+
+    public GameObject bullet;
+    private Vector2 bulletPos;
+    public float fireRate = 0.5f;
+    private float nextFire = 0.0f;
+
     public int maxHealth = 3;
     public int currentHealth;
 
@@ -15,6 +22,7 @@ public class Hero : MonoBehaviour
 
     private float timerStar = 0.0f;
     private float invivibleStar = 10.0f;
+    private byte effectTime = 5;
 
     private byte r = 0;
     private byte g = 0;
@@ -38,24 +46,23 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth < 1)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) == true)
         {
             if (starLooted == false)
             {
-                if (currentHealth > 1)
-                {
-                    currentHealth -= 1;
-                    healthbar.SetHealth(currentHealth);
-                    hit = true;
-                    red = 0;
-                }
-                else
-                {
-                    SceneManager.LoadScene("GameOver");
-                }
+                currentHealth -= 1;
+                healthbar.SetHealth(currentHealth);
+                hit = true;
+                red = 0;
             }
             
         }
+
         if (timerStar > 0.0f && timerStar < invivibleStar)
         {
             gameObject.GetComponent<Renderer>().material.color = new Color32(r, g, b, 255);
@@ -82,9 +89,9 @@ public class Hero : MonoBehaviour
             if (r2 > 0) 
             {
                 GameObject.Find("door").GetComponent<Renderer>().material.color = new Color32(r2, g2, b2, 255);
-                r2 -= 1;
-                g2 -= 1;
-                b2 -= 1;
+                r2 -= effectTime;
+                g2 -= effectTime;
+                b2 -= effectTime;
             }
             else
             {
@@ -95,7 +102,7 @@ public class Hero : MonoBehaviour
         {
             if (red < 255)
             {
-                red += 1;
+                red += effectTime;
                 gameObject.GetComponent<Renderer>().material.color = new Color32(red, 0, 0, 255);
             }
             else
@@ -109,7 +116,7 @@ public class Hero : MonoBehaviour
         {
             if (green < 255)
             {
-                green += 1;
+                green += effectTime;
                 gameObject.GetComponent<Renderer>().material.color = new Color32(0, green, 0, 255);
             }
             else
@@ -119,9 +126,14 @@ public class Hero : MonoBehaviour
                 healed = false;
             }
         }
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            fire();
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Button"))
         {
@@ -144,7 +156,37 @@ public class Hero : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Teleport"))
         {
-            SceneManager.LoadScene("LevelTwo");
+            if (level == 1) 
+            {
+                SceneManager.LoadScene("LevelTwo");
+            }
+            if (level == 2)
+            {
+                SceneManager.LoadScene("LevelThree");
+            }
+
         }
+        else if (other.gameObject.CompareTag("Monster"))
+        {
+            looseLife();
+        }
+    }
+
+    void looseLife()
+    {
+        if (starLooted == false)
+        {
+            currentHealth -= 1;
+            healthbar.SetHealth(currentHealth);
+            hit = true;
+            red = 0;
+        }
+    }
+
+    void fire()
+    {
+        bulletPos = transform.position;
+        bulletPos += new Vector2(+0.4f, -0.04f);
+        Instantiate(bullet, bulletPos, Quaternion.identity);
     }
 }

@@ -9,6 +9,5 @@ public class PlayAgain : MonoBehaviour
     public void playAgain()
     {
         SceneManager.LoadScene("LevelOne");
-        Debug.Log("HEY");
     }
 }

@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Leave : MonoBehaviour
 {
-    public Button button;
-
-    void TaskOnClick()
+    public void leave()
     {
         Application.Quit();
     }

@@ -8,6 +8,9 @@ TagManager:
   - Button
   - Heart
   - Teleport
+  - Monster
+  - Hero
+  - Bullet
   layers:
   - Default
   - TransparentFX

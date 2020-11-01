@@ -21,19 +21,19 @@ public class Move : MonoBehaviour
     {
         Vector3 movement = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.LeftArrow) == true)
+        if (Input.GetKey(KeyCode.Q) == true)
         {
             movement += Vector3.left;
         }
-        if (Input.GetKey(KeyCode.RightArrow) == true)
+        if (Input.GetKey(KeyCode.D) == true)
         {
             movement += Vector3.right;
         }
-        if (Input.GetKey(KeyCode.UpArrow) == true)
+        if (Input.GetKey(KeyCode.Z) == true)
         {
             movement += Vector3.up;
         }
-        if (Input.GetKey(KeyCode.DownArrow) == true)
+        if (Input.GetKey(KeyCode.S) == true)
         {
             movement += Vector3.down;
         }

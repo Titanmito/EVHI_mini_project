@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d8827b6e3175645905dac32e0d0cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 307111563}
 --- !u!114 &307111563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +217,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 307111564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 307111562}
+        m_TargetAssemblyTypeName: Leave, Assembly-CSharp
+        m_MethodName: leave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &307111564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +442,7 @@ GameObject:
   - component: {fileID: 1205527995}
   - component: {fileID: 1205527994}
   - component: {fileID: 1205527993}
+  - component: {fileID: 1205527992}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -458,6 +470,18 @@ RectTransform:
   m_AnchoredPosition: {x: -24.698, y: -27.5}
   m_SizeDelta: {x: 30, y: 14.084448}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1205527992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205527990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b314bce60c7a2c945b52c3fac6928331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1205527993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,13 +525,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: b314bce60c7a2c945b52c3fac6928331, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1205527992}
+        m_TargetAssemblyTypeName: PlayAgain, Assembly-CSharp
+        m_MethodName: playAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
