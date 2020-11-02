@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 
 public class Hero : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Hero : MonoBehaviour
     public int level;
 
     public GameObject bullet;
+    public GameObject door;
     private Vector2 bulletPos;
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
@@ -139,6 +141,10 @@ public class Hero : MonoBehaviour
         {
             Destroy(other.gameObject);
             doorOpen = true;
+            if (level == 3)
+            {
+                Instantiate(door, new Vector2(2.5f,0f), Quaternion.identity);
+            }
         }
         else if (other.gameObject.CompareTag("Star"))
         {
@@ -164,11 +170,28 @@ public class Hero : MonoBehaviour
             {
                 SceneManager.LoadScene("LevelThree");
             }
+            if (level == 3)
+            {
+                SceneManager.LoadScene("LevelFour");
+            }
+            if (level == 4)
+            {
+                SceneManager.LoadScene("LevelFive");
+            }
+            if (level == 5)
+            {
+                SceneManager.LoadScene("Congratulation");
+            }
 
         }
         else if (other.gameObject.CompareTag("Monster"))
         {
             looseLife();
+        }
+        else if (other.gameObject.CompareTag("Hole"))
+        {
+            looseLife();
+            transform.position = new Vector2(-2f, 0.9f);
         }
     }
 
