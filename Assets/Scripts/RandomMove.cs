@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class RandomMove : MonoBehaviour
 {
+    public Vector2 target1;
+    public Vector2 target2;
     Vector3 target;
     bool b = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = new Vector3(2.0f, 1.0f);
+        target = target1;
     }
 
     // Update is called once per frame
@@ -18,12 +20,12 @@ public class RandomMove : MonoBehaviour
     {
         if (target.Equals(transform.position) && b == true)
         {
-            target = new Vector3(2.0f, -1.0f);
+            target = target1;
             b = false;
         }
         else if (target.Equals(transform.position) && b == false)
         {
-            target = new Vector3(2.0f, 1.0f);
+            target = target2;
             b = true;
         }
         transform.position = Vector3.MoveTowards(transform.position, target, 1.5f * Time.deltaTime);

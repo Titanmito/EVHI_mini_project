@@ -190,7 +190,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.7719297
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1477,6 +1477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero
       objectReference: {fileID: 0}
+    - target: {fileID: 2279338415489189971, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
     - target: {fileID: 2279338415489189973, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
       propertyPath: healthbar
       value: 
@@ -1485,6 +1489,10 @@ PrefabInstance:
       propertyPath: level
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2279338415489189973, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 242557288161007794, guid: bda1f6e724f68b345910158856865e86, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
 --- !u!1001 &2833697013155707910

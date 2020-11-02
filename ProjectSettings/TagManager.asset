@@ -12,6 +12,8 @@ TagManager:
   - Hero
   - Bullet
   - Hole
+  - DoubleDoor
+  - BulletBoss
   layers:
   - Default
   - TransparentFX

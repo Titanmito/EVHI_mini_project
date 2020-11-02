@@ -1333,6 +1333,7 @@ GameObject:
   - component: {fileID: 1196110145}
   - component: {fileID: 1196110144}
   - component: {fileID: 1196110143}
+  - component: {fileID: 1196110146}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1375,7 +1376,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.6389105
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1405,6 +1406,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196110146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196110142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893200129b15bb042af022aefd842255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1745797784}
 --- !u!1001 &1337162703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1631,6 +1645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero
       objectReference: {fileID: 0}
+    - target: {fileID: 2279338415489189971, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
     - target: {fileID: 2279338415489189973, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
       propertyPath: healthbar
       value: 
@@ -1649,6 +1667,11 @@ PrefabInstance:
       objectReference: {fileID: 2833697013086234222, guid: 931635aaf02636940a55ff59460f44cc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
+--- !u!4 &1745797784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2279338415489189969, guid: bf99602829a8cb549b1ad0d4957a1763, type: 3}
+  m_PrefabInstance: {fileID: 1745797783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1781785544
 PrefabInstance:
   m_ObjectHideFlags: 0

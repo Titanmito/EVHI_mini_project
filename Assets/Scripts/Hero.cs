@@ -10,6 +10,10 @@ public class Hero : MonoBehaviour
 
     public GameObject bullet;
     public GameObject door;
+    public GameObject rightdoor;
+    public GameObject leftdoor;
+
+
     private Vector2 bulletPos;
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
@@ -178,11 +182,6 @@ public class Hero : MonoBehaviour
             {
                 SceneManager.LoadScene("LevelFive");
             }
-            if (level == 5)
-            {
-                SceneManager.LoadScene("Congratulation");
-            }
-
         }
         else if (other.gameObject.CompareTag("Monster"))
         {
@@ -192,6 +191,16 @@ public class Hero : MonoBehaviour
         {
             looseLife();
             transform.position = new Vector2(-2f, 0.9f);
+        }
+        else if (other.gameObject.CompareTag("DoubleDoor"))
+        {
+            Destroy(other.gameObject);
+            Instantiate(leftdoor, new Vector2(-0.6896f, -1.049f), Quaternion.identity);
+            Instantiate(rightdoor, new Vector2(0.722f, -1.049f), Quaternion.identity);
+        }
+        else if (other.gameObject.CompareTag("BulletBoss"))
+        {
+            looseLife();
         }
     }
 
@@ -208,8 +217,18 @@ public class Hero : MonoBehaviour
 
     void fire()
     {
-        bulletPos = transform.position;
-        bulletPos += new Vector2(+0.4f, -0.04f);
-        Instantiate(bullet, bulletPos, Quaternion.identity);
+        if (level != 5)
+        {
+            bulletPos = transform.position;
+            bulletPos += new Vector2(+0.4f, -0.04f);
+            Instantiate(bullet, bulletPos, bullet.transform.rotation);
+        }
+        else
+        {
+            bulletPos = transform.position;
+            bulletPos += new Vector2(+0, 0.4f);
+            Instantiate(bullet, bulletPos, bullet.transform.rotation);
+        }
+        
     }
 }

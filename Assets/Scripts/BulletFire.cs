@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletFire : MonoBehaviour
 {
-    public float velocityX = 5.0f;
+    public float velocityX;
+    public float velocityY;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -16,7 +17,7 @@ public class BulletFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(velocityX, 0f);
+        rb.velocity = new Vector2(velocityX, velocityY);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -24,6 +25,10 @@ public class BulletFire : MonoBehaviour
         if (!other.gameObject.CompareTag("Hero"))
         {
             Destroy(gameObject);
-        }     
+        }
+        else if (other.gameObject.CompareTag("Hero") && velocityY < 0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
