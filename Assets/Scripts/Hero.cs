@@ -13,7 +13,6 @@ public class Hero : MonoBehaviour
     public GameObject rightdoor;
     public GameObject leftdoor;
 
-
     private Vector2 bulletPos;
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
@@ -25,6 +24,7 @@ public class Hero : MonoBehaviour
     private bool doorOpen = false;
     private bool hit = false;
     private bool healed = false;
+    private bool touchedLight = false;
 
     private float timerStar = 0.0f;
     private float invivibleStar = 10.0f;
@@ -202,6 +202,11 @@ public class Hero : MonoBehaviour
         {
             looseLife();
         }
+        else if (other.gameObject.CompareTag("Light"))
+        {
+            touchedLight = true;
+            Destroy(other.gameObject);
+        }
     }
 
     void looseLife()
@@ -229,6 +234,10 @@ public class Hero : MonoBehaviour
             bulletPos += new Vector2(+0, 0.4f);
             Instantiate(bullet, bulletPos, bullet.transform.rotation);
         }
-        
+    }
+
+    public bool getLight()
+    {
+        return touchedLight;
     }
 }
