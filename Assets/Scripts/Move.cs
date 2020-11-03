@@ -37,7 +37,11 @@ public class Move : MonoBehaviour
         {
             movement += Vector3.down;
         }
+        if (Input.GetKey(KeyCode.Escape) == true)
+        {
+            Application.Quit();
+        }
 
-        transform.position += movement * speed * Time.deltaTime;
+            transform.position += movement * speed * Time.deltaTime;
     }
 }
